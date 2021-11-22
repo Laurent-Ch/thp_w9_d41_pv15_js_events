@@ -103,3 +103,52 @@ cardsViewButtons.forEach(button => {
 
 //----------------------------------------------------------------------------//
 // Fonctionnalité 7.
+let cards = document.querySelectorAll(".col-md-4");
+let rightArrowBtn = document.querySelector(".jumbotron .btn-secondary");
+
+function shiftCardsRight() {
+  let cards = document.querySelectorAll(".col-md-4");
+  cards[0].parentNode.insertBefore(cards[5], cards[0]);
+}
+
+rightArrowBtn.addEventListener("click", shiftCardsRight);
+
+//----------------------------------------------------------------------------//
+// Fonctionnalité 8.
+let leftArrowBtn = document.querySelector(".jumbotron .btn-primary");
+
+function shiftCardsLeft(e) {
+  e.preventDefault();
+  let cards = document.querySelectorAll(".col-md-4");
+  cards[5].parentNode.insertBefore(cards[0], cards[5].nextSibling);
+}
+
+leftArrowBtn.addEventListener("click", shiftCardsLeft);
+
+//----------------------------------------------------------------------------//
+// Fonctionnalité 9.
+let logo = document.querySelector(".navbar-brand");
+var body = document.querySelector("body");
+
+logo.addEventListener("keypress", e => {
+  body.className = "";
+  
+  switch(e.code) {
+    case "KeyX": 
+      console.log("test");
+      break;
+    case "KeyQ":
+      body.classList.add("col-4");
+      break;
+    case "KeyY":
+      body.classList.add("col-4", "offset-md-4");
+      break;
+    case "KeyP":
+      body.classList.add("col-4", "offset-md-8");
+      break;
+    case "KeyB":
+      body.className = "";
+      break;
+  }
+})
+
