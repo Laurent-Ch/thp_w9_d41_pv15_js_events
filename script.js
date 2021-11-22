@@ -66,4 +66,40 @@ secondCardEditBtn.addEventListener ("click", captainPlanet);
 
 //----------------------------------------------------------------------------//
 // Fonctionnalité 5.
+let navbarAll = document.querySelector(".navbar");
+let bsLink = document.querySelector("link"); 
+let head = document.querySelector("head");
 
+function removeBs () {
+  if (head.contains(bsLink)) {
+    bsLink.remove();
+  }
+  else {
+    head.appendChild(bsLink);
+  }
+}
+
+navbarAll.addEventListener("dblclick", removeBs);
+
+//----------------------------------------------------------------------------//
+// Fonctionnalité 6.
+let cardsViewButtons = document.querySelectorAll(".col-md-4 .btn-success");
+
+let cardCollapsed = false;
+cardsViewButtons.forEach(button => {
+  button.addEventListener("mouseover", e => { 
+    if (cardCollapsed === false) {
+      e.composedPath()[3].children[0].style.display = "none";
+      e.composedPath()[4].children[0].style.width = "20%";
+      cardCollapsed = true;
+    }
+    else {
+      e.composedPath()[3].children[0].style.display = "block";
+      e.composedPath()[4].children[0].style.width = "100%";
+      cardCollapsed = false;
+    }
+    })
+})
+
+//----------------------------------------------------------------------------//
+// Fonctionnalité 7.
